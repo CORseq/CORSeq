@@ -9,7 +9,7 @@
 
 The 'config.txt' file is a reference file for all .sh scripts. This is the file where all required modules are loaded, paths to the datasets and files are specified, and parameter values (if any) are specified.
 
-The python script 'collapse_annotation.py' is utilized in the post alignment quality control step with the RNA-SeQC tool, where the script is used to collapse the full GTF annotation, which effectively produces the union of transcripts for each gene. This step is invoked prior to running RNA-SeQC tool because the current version of RNA-SeQC does not support full annotation GTFs.
+The python script 'collapse_annotation.py' is utilized in the post alignment quality control step with the RNA-SeQC tool, where the script is used to collapse the full GTF annotation, which effectively produces the union of transcripts for each gene. This step is invoked prior to running RNA-SeQC tool because the current version of RNA-SeQC (RNA-SeQC_v1.1.8) does not support full annotation GTFs.
 
 **Data.** 
 
