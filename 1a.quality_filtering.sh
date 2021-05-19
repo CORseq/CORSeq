@@ -5,9 +5,6 @@
 #PBS -P HEAL1390
 #PBS -l select=1:ncpus=24
 #PBS -l walltime=12:00:00
-##PBS -m bae
-##PBS -M awanydenis@gmail.com
-
 
 
 # SCRIPT: 1a.quality_filtering.sh
