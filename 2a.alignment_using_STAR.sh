@@ -40,7 +40,7 @@ Filt_Fastq=${wd}out_quality_filtering/trimmomatic # directory to the filtered fa
 #gunzip ${wd}ref_data/gencode.v36.annotation.gtf.gz
 
 
-: '
+
 mkdir -p ${wd}ref_data/genome_index_dir # directory to store genome indices.
 
 ${STAR_soft} --runMode genomeGenerate \
@@ -53,8 +53,6 @@ ${STAR_soft} --runMode genomeGenerate \
 --genomeSAindexNbases 12 
 
 
-
-'
 
 # Step 2 (final): mapping reads to the genome
 # ------------------------------------------------
