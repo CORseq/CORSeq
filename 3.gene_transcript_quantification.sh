@@ -5,8 +5,6 @@
 #PBS -P HEAL1390
 #PBS -l select=1:ncpus=24
 #PBS -l walltime=24:00:00
-#PBS -m bae
-#PBS -M awanydenis@gmail.com
 
 
 # SCRIPT: 3a.gene_transcript_quantification.sh
