@@ -1,0 +1,46 @@
+
+#!/bin/bash
+
+############ SOFTWARES, SUPPORTING/REFERENCE DATA AND DEFAULT/INITIAL PARAMETER VALUES ############
+
+# -----------------------------------------------------------------------------------------
+# Load required modules (for analysis on cluster)
+module load chpc/BIOMODULES
+#module load chpc/python/3.7.0
+#module load chpc/python/2.7.15
+module add chpc/gnu/parallel-20160422
+module load chpc/R/3.5.1-gcc7.2.0
+module add chpc/java/1.8.0_73
+module load chpc/gcc/6.3.0
+module load gcc/4.9.0
+module load chpc/cmake/3.7.1/gcc-4.9.0
+#module load chpc/singularity/3.5.3
+module add pandoc/2.11.4
+module add FastqPuri
+module load BWA/0.7.17 
+module load samtools/1.9
+module add python/3.7.4_gcc610
+python -c "import multiqc"
+module load trimmomatic/0.36
+#module load python/3.8.1
+#python -c "import HTSeq"
+module load java/11.0.6
+module load gmap/2019-09-12
+
+
+
+# -----------------------------------------------------------------------------------------
+# Specify the working directory that contains the softwares (in directory 'softwares'),
+# and required files.
+
+#wd=/mnt/lustre/users/adenis/SATVI/RNA_Seq/
+wd=/home/adenis/lustre3p/SATVI/RNA_Seq/
+cd $wd
+
+
+# -----------------------------------------------------------------------------------------
+# specify directory for the fastq files
+fastq_data=/mnt/lustre/groups/HEAL1390/CORTIS_RNASeq/CORTIS_RNASeq_Globin_treatment/
+#fastq_data=/mnt/lustre/groups/HEAL1390/CORTIS_RNASeq/CORTIS_RNASeq_Globin_untreated/
+#fastq_data=${wd}ACS/
+# -----------------------------------------------------------------------------------------
