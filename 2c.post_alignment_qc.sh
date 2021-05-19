@@ -21,22 +21,22 @@
 
 mkdir -p ${wd}out_post_alignment_qc # directory to store output from the RNA-SeQC run.
 
-# (1) Proportion of rRNA.
+
 # Current version of RNA-SeQC does not support full annotation gtfs. So we first use the python script
 # 'collapse_annotation.py' to collapse our annotation, which effectively produces the union of transcripts for each gene.
 
-#python collapse_annotation.py ${wd}ref_data/gencode.v36.annotation.gtf ${wd}ref_data/gencode.v36.annotation_collapsed.gtf
+python collapse_annotation.py ${wd}ref_data/gencode.v36.annotation.gtf ${wd}ref_data/gencode.v36.annotation_collapsed.gtf
 
 # Index the reference fasta files (done once) to create .fai file
-#samtools faidx ${wd}ref_data/GRCh38.primary_assembly.genome.fasta
+samtools faidx ${wd}ref_data/GRCh38.primary_assembly.genome.fasta
 
 
 # Create sequence dictionary for the reference sequence
-#java -jar ${wd}softwares/picard.jar CreateSequenceDictionary.jar \
-#R=${wd}ref_data/GRCh38.primary_assembly.genome.fasta \
-#O=${wd}ref_data/GRCh38.primary_assembly.genome.dict
+java -jar ${wd}softwares/picard.jar CreateSequenceDictionary.jar \
+R=${wd}ref_data/GRCh38.primary_assembly.genome.fasta \
+O=${wd}ref_data/GRCh38.primary_assembly.genome.dict
 
-: '
+
 
 # Deduplicate pre-processed reads for RNASeqQC analysis. The Picard MarkDuplicates program identifies duplicates reads 
 # in each dataset and retains only one of the duplicated reads for RNASeqQC.
@@ -79,7 +79,7 @@ do
 
 done
 
-'
+
 
 # Now perform post-alignment QC.
 
@@ -91,10 +91,6 @@ do
 
         echo -e "Sample ID\tBam File\tNotes \n$sampleName\t$file\t " >> ${wd}out_post_alignment_qc/${sampleName}/rnaseq_qc_sample.txt
 
-#	${wd}softwares/rnaseqc.v2.4.0.linux ${wd}ref_data/gencode.v30.GRCh38.ERCC.genes.collapsed_only.gtf $file ${wd}out_post_alignment_qc/$sampleName \
-#	--fasta=${wd}ref_data/GRCh38.primary_assembly.genome.fasta
-#done
-#: '
         java -jar ${wd}softwares/RNA-SeQC_v1.1.8.jar -n 1000 \
                 -t ${wd}ref_data/gencode.v30.GRCh38.ERCC.genes.collapsed_only.gtf \
                 -s "$sampleName|$file|NA" \
